@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home,register,login,dashboard,logout_func,new_blog,blogs,blog_details,new_team,about_us,what_we_do
+from .views import home,register,login,dashboard,logout_func,new_blog,blogs,search_post,blog_details,new_team,about_us,what_we_do
 
 
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
 
     # Client view paths
     path("blogs", blogs, name="blogs"),
+    path("search", search_post, name="search"),
     path("blog_details/<int:by>", blog_details, name="blog_details"),
 
 ]

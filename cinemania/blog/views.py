@@ -176,3 +176,12 @@ def blog_details(request,by):
     context = {'blogs':blogs , 'related_blogs':related_blogs}
 
     return render(request,"blog_details.html",context)
+
+def search_post(request):
+    if request.method == 'POST':
+
+        title = request.POST['title']
+        blog_list = Post.objects.filter(title__contains=title)
+        return render(request, "blog_results.html",{'blog_list': blog_list})
+    else:
+        return redirect(request, 'blogs/blog_results.html')
