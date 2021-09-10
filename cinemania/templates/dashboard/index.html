@@ -4,16 +4,12 @@
 {% endblock %}
 {% block content %}
 
-    <h2 class="mb-4 mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-        welcome back
+    <h3 class="mb-4 mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+        Welcome
         {% if user.is_authenticated %}
             {{ user.username }}
         {% endif %}
-
-        {% if user.is_active %}
-            data
-        {% endif %}
-    </h2>
+    </h3>
     <br>
 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
   <!-- Card -->
