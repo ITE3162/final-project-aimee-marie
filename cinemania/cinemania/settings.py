@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+#new
+
+import django_heroku
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-rq)vz-(id16!3p24t9i0z6m*t4)(5_1m_@!h5t64+blu+%@f0v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,16 +82,18 @@ WSGI_APPLICATION = 'cinemania.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cinemania',
-        'USER': 'postgres',
-        'PASSWORD': 'lucifer',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'cinemania',
+#         'USER': 'postgres',
+#         'PASSWORD': 'lucifer',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
+# new
 
 
 # Password validation
@@ -126,10 +133,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/assets'), ]
 MEDIA_URL= '/templates/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
+
+# new
+STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
