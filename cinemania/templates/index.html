@@ -88,84 +88,28 @@
             </div>
           </div>
             <div class="row text-center pb-5">
+                {% for what in what %}
                 <div class="col-md">
                     <div class="card bg-dark text-light">
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                              <i class="bi bi-film"></i>
+                              <i class="bi bi-film">
+                                  <img src="../templates/media/{{ what.cover}}" width="50" alt="">
+                              </i>
                             </div>
                             <h3 class="card-title">
-                              Film Reviews
+                              {{ what.title }}
                             </h3>
                             <p class="card-text pb-5">
-                                "Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-
-                                "Lorem ipsum dolor sit amet,
-
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-
-                                "Lorem ipsum dolor sit amet,
+                                {{ what.content }}
                             </p>
                             <a href="#" class="btn btn-danger" style="width: 200px;height: 50px">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="card bg-dark text-light">
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                              <i class="bi bi-file-earmark-x-fill"></i>
-                            </div>
-                            <h3 class="card-title">
-                              Movie Blogs
-                            </h3>
-                            <p class="card-text pb-5">
-                                "Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
+                {% endfor %}
 
-                                "Lorem ipsum dolor sit amet,
 
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-
-                                "Lorem ipsum dolor sit amet,
-                            </p>
-                            <a href="#" class="btn btn-danger" style="width: 200px;height: 50px">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card bg-dark text-light">
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                              <i class="bi bi-calendar-event"></i>
-                            </div>
-                            <h3 class="card-title">
-                              Events
-                            </h3>
-                            <p class="card-text pb-5">
-                                "Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-
-                                "Lorem ipsum dolor sit amet,
-
-                                do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-
-                                "Lorem ipsum dolor sit amet,
-                            </p>
-                            <a href="#" class="btn btn-danger" style="width: 200px;height: 50px">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

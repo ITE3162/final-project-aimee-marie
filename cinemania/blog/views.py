@@ -16,6 +16,7 @@ def home(request):
     about = About.objects.all()
     what = What_we_do.objects.all()
     context = {'blogs': blogs , 'team': team , 'about': about , 'what': what}
+
     # create contact post
     if request.method == 'POST':
         if request.POST.get('email') and request.POST.get('subject') and request.POST.get('message') :
@@ -86,7 +87,13 @@ def logout_func(request):
 @login_required(login_url='/login')
 def dashboard(request):
     blogs = Post.objects.filter(author=request.user)
-    return render(request, 'dashboard/index.html', {'blogs': blogs})
+    total_blogs = Post.objects.filter(author=request.user).count()
+    total_members = Team.objects.all().count()
+    total_contacts = Contact.objects.all().count()
+
+    context = {'blogs': blogs, 'total_blogs': total_blogs, 'total_members': total_members, 'total_contacts': total_contacts}
+
+    return render(request, 'dashboard/index.html', context)
 
 @login_required(login_url='/login')
 def new_blog(request):
@@ -177,11 +184,38 @@ def blog_details(request,by):
 
     return render(request,"blog_details.html",context)
 
+def edit_blog(request,by):
+    blogs = Post.objects.get(id=by)
+    context = {'blogs':blogs }
+
+    if request.method == 'POST':
+        if request.POST.get('title') and request.POST.get('tags') and request.POST.get('content') and request.FILES['thumbnail']:
+
+            blog = Post.objects.filter(pk=by).update(
+                title=request.POST.get('title'),
+                tags=request.POST.get('tags'),
+                content=request.POST.get('content'),
+                thumbnail=request.FILES['thumbnail'],
+            )
+            messages.success(request, 'Blog Updated successfully !')
+            return render(request, "dashboard/edit-blog.html", context)
+        else:
+            messages.error(request, 'Something went wrong ,Please try again later!')
+            return render(request,"dashboard/edit-blog.html",context)
+    else:
+        return render(request,"dashboard/edit-blog.html",context)
+
+def delete_blog(request,by):
+    blog_to_delete = Post.objects.get(id=by)
+    blog_to_delete.delete()
+    messages.success(request, 'Blog Deleted successfully!')
+    return redirect('dashboard')
+
 def search_post(request):
     if request.method == 'POST':
 
         title = request.POST['title']
-        blog_list = Post.objects.filter(title__contains=title)
+        blog_list = Post.objects.filter(title__icontains=title)
         return render(request, "blog_results.html",{'blog_list': blog_list})
     else:
         return redirect(request, 'blogs/blog_results.html')
