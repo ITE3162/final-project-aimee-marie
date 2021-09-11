@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 #new
-
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-rq)vz-(id16!3p24t9i0z6m*t4)(5_1m_@!h5t64+blu+%@f0v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,21 +80,29 @@ WSGI_APPLICATION = 'cinemania.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# online
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cinemania',
-        'USER': 'postgres',
-        'PASSWORD': 'lucifer',
-        'HOST': '127.0.0.1',
+        'NAME': 'dcvtiiuipkn221',
+        'USER': 'vkoynhycqfwpwy',
+        'PASSWORD': 'be7a0ca4d3b9d8bdcb9aa2b4e43e552ac6864a46fbe97dd8536802ce798e5a72',
+        'HOST': 'ec2-34-196-238-94.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
 
-# new
 # DATABASES = {
-#     'default':dj_database_url.config()
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'cinemania',
+#         'USER': 'postgres',
+#         'PASSWORD': 'lucifer',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
 # }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -132,14 +140,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/assets'), ]
-MEDIA_URL= '/templates/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/assets'), ]
+# MEDIA_URL= '/templates/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
 
 # new
-# STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
-# django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
+STATIC_URL = '/templates/media/'
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
