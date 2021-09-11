@@ -34,7 +34,7 @@
                     <div class="col-6 p-4 d-flex flex-column position-static">
                       <h4 class="mb-0">{{ rel_blog.title }}</h4>
                         <strong class="d-inline-block mb-2 text-primary"> # {{ rel_blog.tags }}</strong>
-                      <div class="mb-1 text-muted">{{ rel_blog.created_on }}</div>
+                      <div class="mb-1 text-muted">{{ rel_blog.created_on |date:"M d, Y"}}</div>
                       <p class="card-text mb-auto">
                           {{ rel_blog.content|slice:":60"}}...
                       </p>

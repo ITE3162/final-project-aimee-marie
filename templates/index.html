@@ -168,7 +168,7 @@
                                   <img style="width: 191px;height: 200px;" src="{{ blog.thumbnail}}">
                               </a>
                               <p class="card-title pt-2">
-                                   {{ blog.created_on }}
+                                   {{ blog.created_on |date:"M d, Y" }}
                               </p>
                               <h5 class="card-title ">
                                   {{ blog.author }}
