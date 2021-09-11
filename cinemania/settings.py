@@ -147,7 +147,8 @@ USE_TZ = True
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
 
 # new
-STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/assets'), ]
+# STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
 STATIC_URL = '/templates/media/'
 django_heroku.settings(locals())
 
