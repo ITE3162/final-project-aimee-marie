@@ -56,7 +56,7 @@
                               <a href="{% url 'blog_details' by=blog.id %}" class="stretched-link">Continue reading</a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                 <img src="../templates/media/{{ blog.thumbnail}}" class="bd-placeholder-img" width="200" height="250" alt="blog image">
+                                 <img src="{{ blog.thumbnail}}" class="bd-placeholder-img" width="200" height="250" alt="blog image">
                             </div>
                           </div>
                         </div>

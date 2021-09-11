@@ -14,7 +14,7 @@ class Post(models.Model):
     updated_on=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     status=models.IntegerField(choices=STATUS, default=0)
-    thumbnail = models.ImageField(upload_to='images')
+    thumbnail = models.ImageField(upload_to='images/')
 
     class Meta:
         ordering=['-created_on']

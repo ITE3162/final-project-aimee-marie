@@ -4,21 +4,38 @@
 {% endblock %}
 {% block content %}
 
-{% if messages %}
-      {% for m in messages %}
-          <div class="bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert">
-            <span class="block sm:inline">{{m}}</span>
-            <span class="absolute pin-t pin-b pin-r px-4 py-3">
-                <a href="">
-                  <svg class="fill-current h-6 w-6 text-red" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-                </a>
-            </span>
-          </div>
-      {% endfor %}
-  {% endif %}
+
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         What we do
     </h2>
+
+    {% if messages %}
+      {% for m in messages %}
+        {% if m.tags == "error"%}
+            <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-white bg-red-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-red" href="">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <span>{{m}}</span>
+              </div>
+              <span>X</span>
+            </a>
+        {% else %}
+            <a style="background: #0e9f6e" class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-white  rounded-lg shadow-md focus:outline-none focus:shadow-outline-green" href="">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <span>{{m}}</span>
+              </div>
+              <span>X</span>
+            </a>
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
@@ -26,20 +43,20 @@
         <label class="block text-sm">
           <span class="text-gray-700 dark:text-gray-400">Tittle</span>
           <input
-            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
             placeholder="Enter The Tittle" name="title"
           />
         </label>
 
        <label class="block mt-4 text-sm">
           <span class="text-gray-700 dark:text-gray-400">Icon Image</span>
-            <input type="file" id="img" name="cover"  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" accept="image/*">
+            <input type="file" id="img" name="cover"  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray" accept="image/*">
        </label>
 
         <label class="block mt-4 text-sm">
           <span class="text-gray-700 dark:text-gray-400">Description:</span>
           <textarea
-            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray"
             rows="6"
             placeholder="Enter some Description"
             name="content"
@@ -47,9 +64,9 @@
         </label>
             <button type="submit"
                     class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white
-                    transition-colors duration-150 bg-purple-600 border
-                    border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700
-                    focus:outline-none focus:shadow-outline-purple">
+                    transition-colors duration-150 bg-blue-600 border
+                    border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700
+                    focus:outline-none focus:shadow-outline-blue">
                    Create New Service
             </button>
 

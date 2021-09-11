@@ -149,7 +149,8 @@ USE_TZ = True
 # new
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/assets'), ]
 # STATIC_ROOT = os.path.join(BASE_DIR,'templates/assets')
-STATIC_URL = '/templates/media/'
+# STATIC_URL = '/templates/media/'
+STATIC_URL = [os.path.join(BASE_DIR, '/images/'), ]
 django_heroku.settings(locals())
 
 # Default primary key field type

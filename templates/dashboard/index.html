@@ -81,7 +81,7 @@
                 {% for blog_data in blogs %}
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm">
-                            <img style="width: 100px" src="../templates/media/{{ blog_data.thumbnail}}">
+                            <img style="width: 100px" src="{{ blog_data.thumbnail}}">
                         </td>
                         <td class="px-4 py-3 text-sm">
                             {{ blog_data.title }}

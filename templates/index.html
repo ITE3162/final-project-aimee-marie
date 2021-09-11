@@ -68,7 +68,7 @@
                   <div class="col-md">
                     <div class="card text-dark" id="about" style="border: 0px;">
                           <div class="card-body text-center">
-                            <img src="../templates/media/{{ about.profile}}" style="height: 350px" class="img-thumbnail" alt="">
+                            <img src="{{ about.profile}}" style="height: 350px" class="img-thumbnail" alt="">
                           </div>
                       </div>
                   </div>
@@ -94,14 +94,14 @@
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
                               <i class="bi bi-film">
-                                  <img src="../templates/media/{{ what.cover}}" width="50" alt="">
+                                  <img src="{{ what.cover}}" width="50" alt="">
                               </i>
                             </div>
                             <h3 class="card-title">
                               {{ what.title }}
                             </h3>
                             <p class="card-text pb-5">
-                                {{ what.content }}
+                                {{ what.content |slice:":250"}}
                             </p>
                             <a href="#" class="btn btn-danger" style="width: 200px;height: 50px">Read More</a>
                         </div>
@@ -114,7 +114,7 @@
         </div>
     </section>
     <!-- Teams -->
-    <section class="p-5" id="teamSection" id="team">
+    <section class="p-5" id="teamSection" >
       <div class="container">
           <div class="row">
             <div class="col-12">
@@ -130,7 +130,7 @@
                       <div class="row">
                           <div class="col-3">
                           <div id="profile">
-                              <img src="../templates/media/{{ team.profile}}" alt="">
+                              <img src="{{ team.profile}}" alt="">
                           </div>
                       </div>
                       <div class="col-9">
@@ -165,7 +165,7 @@
                       <div class="card bg-dark text-light">
                           <div class="card-body text-center">
                               <a href="{% url 'blogs' %}">
-                                  <img style="width: 191px;height: 200px;" src="../templates/media/{{ blog.thumbnail}}">
+                                  <img style="width: 191px;height: 200px;" src="{{ blog.thumbnail}}">
                               </a>
                               <p class="card-title pt-2">
                                    {{ blog.created_on }}

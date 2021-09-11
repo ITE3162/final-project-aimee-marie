@@ -10,7 +10,7 @@
   <div class="row g-5">
     <div class="col-md-7">
 
-        <img src="../templates/media/{{ blogs.thumbnail}}" class="bd-placeholder-img" width="100%" height="500" alt="">
+        <img src="../{{ blogs.thumbnail}}" class="bd-placeholder-img" width="100%" height="500" alt="">
 
       <article class="blog-post">
         <h2 class="blog-post-title">{{ blogs.title }}</h2>
@@ -41,7 +41,7 @@
                       <a href="{% url 'blog_details' by=rel_blog.id %}" class="stretched-link">Continue reading</a>
                     </div>
                     <div class="col-6 d-none d-lg-block">
-                        <img src="../templates/media/{{ rel_blog.thumbnail}}" class="bd-placeholder-img" width="220" height="250">
+                        <img src="../{{ rel_blog.thumbnail}}" class="bd-placeholder-img" width="220" height="250">
                     </div>
                   </div>
                 </div>

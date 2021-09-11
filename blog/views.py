@@ -5,16 +5,16 @@ from django.contrib.auth import authenticate,login as auth_login,logout
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from .models import Post,Contact,Team,About,What_we_do
-
 from django.contrib import messages
 from django.views import generic
 # Create your views here.
 from django.template import RequestContext
+
 def home(request):
     blogs = Post.objects.all()[:3]
     team = Team.objects.all()
-    about = About.objects.all()
-    what = What_we_do.objects.all()
+    about = About.objects.all()[:1]
+    what = What_we_do.objects.all()[:4]
     context = {'blogs': blogs , 'team': team , 'about': about , 'what': what}
 
     # create contact post
@@ -197,7 +197,7 @@ def edit_blog(request,by):
                 content=request.POST.get('content'),
                 thumbnail=request.FILES['thumbnail'],
             )
-            messages.success(request, 'Blog Updated successfully !')
+            messages.success(request, 'Blog Updated successfully ')
             return render(request, "dashboard/edit-blog.html", context)
         else:
             messages.error(request, 'Something went wrong ,Please try again later!')

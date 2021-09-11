@@ -7,6 +7,8 @@
 		<title>Cinemania - {% block title %} {% endblock %}</title>
 		{% load static %}
 		<!-- Bootstrap CSS -->
+        <link rel="icon" type="image/png" href="{% static '../templates/media/favicon.png' %}"/>
+        <link rel="icon" type="image/png" href="{% static '../templates/media/favicon.png' %}"/>
 		<link rel="stylesheet" href="{% static '../templates/media/style.css' %}">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +27,7 @@
 		<!-- navigation -->
     <nav class="nav navbar navbar-expand-sm navbar-dark py-3" style="background: #070602;">
         <div class="container-fluid">
-            <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static '../templates/media/logo.png'' %}" alt=""></a>
+            <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static '../templates/media/logo.png' %}" alt=""></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +45,7 @@
                       <a href="#what-we-do" class="nav-link">What We Do</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#team" class="nav-link">Team</a>
+                        <a href="#teamSection" class="nav-link">Team</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'blogs' %}" class="nav-link">Blog</a>
