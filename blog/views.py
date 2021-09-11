@@ -14,7 +14,7 @@ def home(request):
     blogs = Post.objects.all()[:3]
     team = Team.objects.all()
     about = About.objects.all()[:1]
-    what = What_we_do.objects.all()[:4]
+    what = What_we_do.objects.all()[:3]
     context = {'blogs': blogs , 'team': team , 'about': about , 'what': what}
 
     # create contact post
